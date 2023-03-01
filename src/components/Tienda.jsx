@@ -1,10 +1,11 @@
 import React from 'react';
+import Productos from './Productos';
 
-const Tienda = () => {
+const Tienda = ({productos}) => {
     return ( 
         <div>
             <h1>Tienda</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima nobis magni aut quae omnis. Vitae, nihil. Velit voluptate atque tempore et minima vitae.</p>
+            <Productos productos={productos} />
         </div>
      );
 }

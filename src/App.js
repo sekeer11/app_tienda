@@ -6,6 +6,29 @@ import Blog from './components/Blog';
 import Tienda from './components/Tienda';
 import Error404 from './components/Error404'
 
+const productos = [
+  {
+      id: 1,
+      nombre: 'Producto #1',
+      descripcion: 'Este el producto 1'
+  },
+  {
+      id: 2,
+      nombre: 'Producto #2',
+      descripcion: 'Este el producto 2'
+  },
+  {
+      id: 3,
+      nombre: 'Producto #3',
+      descripcion: 'Este el producto 3'
+  },
+  {
+      id: 3,
+      nombre: 'Producto #3',
+      descripcion: 'Este el producto 4'
+  }
+]
+
 const App = () => {
   return ( 
     
@@ -19,7 +42,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Inicio /> } />
             <Route path="/blog" element={<Blog /> } />
-            <Route path="/tienda" element={<Tienda /> } />
+            <Route path="/tienda" element={<Tienda productos={productos} /> } />
             <Route path="*" element={<Error404 /> } />
           </Routes>
         </main>
