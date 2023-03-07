@@ -1,23 +1,19 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-const Carrito = () => {
-    const[carrito, cambiarCarrito] = useState([
-        { id: 1, cantidad: 2, nombre: 'Producto1'},
-        { id: 2, cantidad: 3, nombre: 'Producto2'},
-        { id: 3, cantidad: 1, nombre: 'Producto3'}
-    ]);
+const Carrito = ({carrito}) => {
+    
     return ( 
         <div>
             <h3>Carrito de compras</h3>
             {carrito.length > 0 ?
                 carrito.map( (producto, index) => {
                     return(
-                        <Producto>
+                        <Producto key={index}>
                             <NombreProducto> 
                                 {producto.nombre} 
                             </NombreProducto>
-                            <NombreProducto> Cantidad: {producto.cantidad} </NombreProducto>
+                            Cantidad: {producto.cantidad}
                         </Producto>
                     );
                 })
