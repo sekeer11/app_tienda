@@ -27,8 +27,8 @@ const App = () => {
         descripcion: 'Este el producto 3'
     },
     {
-        id: 3,
-        nombre: 'Producto #3',
+        id: 4,
+        nombre: 'Producto #4',
         descripcion: 'Este el producto 4'
     }
   ]
@@ -52,22 +52,23 @@ const App = () => {
         return producto.id === idProducto
       }).length > 0;
       
-      // Si ya existe se actualiza la cantidad
+      // Si ya existe en el carrito se actualiza la cantidad
       if (yaEstaEnCarrito) {
-        cambiarCarrito( 
-            nuevoCarrito.map(producto => {
-              if (producto.id === idProducto) {
-                return {...producto, cantidad: producto.cantidad + 1}
-              }
-              return producto;
-          })
-        )
+        // Para ello debemos de buscarlo y obtener su posicion en el arreglo
+        // Y en base a su posiscion ya actualizamos el valor
+        nuevoCarrito.forEach((producto, index) => {
+          if (producto.id === idProducto) {
+            const cantidad = nuevoCarrito[index].cantidad
+            nuevoCarrito[index] = {id: idProducto, nombre: nombreProducto, cantidad: cantidad+1} 
+          }
+        });
+      // De otra forma entonces agregamos el producto al arreglo  
       } else {
-        cambiarCarrito(nuevoCarrito.push(
+        nuevoCarrito.push(
           {id: idProducto, nombre: nombreProducto, cantidad: 1}
-        ));
+        );
       }
-
+      cambiarCarrito(nuevoCarrito);
     }
   }
 
